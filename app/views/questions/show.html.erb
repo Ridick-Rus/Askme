@@ -6,6 +6,11 @@
 
     <div class="mt">
       <%= link_to fa_icon('pencil'), edit_question_path(@question), title: 'Изменить вопрос' %>
+
+      <% if @question.hidden == false %>
+      <%= button_to fa_icon('flag'), hide_question_path(@question), title: 'Спрятать вопрос', method: :put %>
+      <% end %>
+
       <%= button_to fa_icon('trash-o'), question_path(@question), method: :delete, title: 'Удалить вопрос' %>
     </div>
 
