@@ -16,7 +16,7 @@ a, button {
 }
 
 .title-sm {
-  font-size: 125;
+  font-size: 125%;
 }
 
 .text-sm {
@@ -25,4 +25,12 @@ a, button {
 
 .hidden {
   opacity: 50%;
+}
+
+.text-grey {
+  color: #a0a0a0;
+}
+
+.text-bold {
+  font-weight: bold;
 }
