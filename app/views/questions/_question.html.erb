@@ -4,20 +4,31 @@
   <%= question.body %>
 </div>
 
+<% if question.answer.present? %>
+  <div class="mb-sm text-dark-red">
+    <%= question.answer %>
+  </div>
+<% end %>
+
 <div class="text-sm question-footer">
   <div class="text-grey ">
     <%= l(question.created_at, format: :short) %>
+    <span>
+      Автор вопроса <%= question.author_id.present? ? (link_to display_nickname(question.author), user_path(question.author)) : '@Аноним' %>
+    </span>
   </div>
 
-  <div>
-    <%= link_to fa_icon('pencil'), edit_question_path(question),
-                title: 'Изменить вопрос' %>
+  <% if question.user == current_user %>
+    <div>
+      <% edit_icon = question.answer.blank? ? 'reply' : 'pencil' %>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
 
-    <% unless question.hidden? %>
-      <%= button_to fa_icon('flag'), hide_question_path(question), title: 'Спрятать вопрос', method: :put %>
-    <% end %>
+      <% unless question.hidden? %>
+        <%= button_to fa_icon('flag'), hide_question_path(question), title: 'Спрятать вопрос', method: :put %>
+      <% end %>
 
-    <%= button_to fa_icon('trash-o'), question_path(question),
-                  method: :delete, title: 'Удалить вопрос' %>
-  </div>
+      <%= button_to fa_icon('trash-o'), question_path(question),
+                    method: :delete, title: 'Удалить вопрос' %>
+    </div>
+  <% end %>
 </div>
