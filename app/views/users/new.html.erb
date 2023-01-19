@@ -26,11 +26,6 @@
       <p class="mt"><%= form.label :password_confirmation, 'Пароль' %></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field' %></p>
 
-      <p class="mt">
-        <%= form.label :headcolor, 'Выбрать цвет шапки(оставьте поле пустым для значения по умолчанию)' %>
-      </p>
-      <p><%= form.text_field :headcolor, class: 'form-text-field' %></p>
-
       <p><%= form.submit "Зарегистрироваться", class: 'button button-main mt-lg' %></p>
     <% end %>
   </div>
