@@ -10,10 +10,15 @@ class User < ApplicationRecord
   format: { with: /\A\w+\z/ }
   validates :headcolor, allow_blank: true, format: { with: /\A#[0-9a-f]{6}\z/i }
 
-  private
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')
 
   def downcase_userdata
     nickname.downcase!
     email.downcase!
+  end
+
+  def to_param
+    nickname
   end
 end
