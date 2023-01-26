@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_secure_password
-
   include Gravtastic
   gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')
+
+  has_secure_password
 
   has_many :questions, dependent: :destroy
 
@@ -15,12 +15,14 @@ class User < ApplicationRecord
 
   validates :headcolor, format: { with: /\A#(\h{3}){1,2}\z/ }
 
+  def to_param
+    nickname
+  end
+
+  private
+
   def downcase_userdata
     nickname&.downcase!
     email&.downcase!
-  end
-
-  def to_param
-    nickname
   end
 end
