@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true, length: { maximum: 40 },
             format: { with: /\A\w+\z/ }
 
-  validates :headcolor, format: { with: /\A#(\h{3}){1,2}\z/ }
+  validates :headcolor, format: { with: /\A#\h{3}{1,2}\z/ }
 
   def to_param
     nickname
