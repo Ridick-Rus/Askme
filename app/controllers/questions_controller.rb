@@ -37,6 +37,8 @@ class QuestionsController < ApplicationController
   end
 
   def index
+    @hash_tags = HashTag.joins(:question_tags).distinct.order(:text)
+
     @questions = Question.order(created_at: :desc).first(10)
     @users = User.order(created_at: :desc).first(10)
   end

@@ -1,12 +1,16 @@
 <% hidden_class = question.hidden? ? 'hidden' : '' %>
 
 <div class="mb-sm <%= hidden_class %> white-space">
-  <%= question.body %>
+  <% parse_tags(question.body).each do |element| %>
+    <%= element -%>
+  <% end %>
 </div>
 
 <% if question.answer.present? %>
   <div class="mb-sm text-dark-red">
-    <%= question.answer %>
+    <% parse_tags(question.answer).each do |element| %>
+      <%= element -%>
+    <% end %>
   </div>
 <% end %>
 

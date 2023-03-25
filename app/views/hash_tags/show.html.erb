@@ -1,0 +1,16 @@
+<div class="container mt-sm">
+  <h2 class="title-lg">
+    <% if @questions.any? %>
+      <h2 class="title-lg">Все вопросы с хэштэгом <%= @hash_tag %></h2>
+    <% else %>
+      <h2 class="title-lg"><%= @hash_tag %> пока ещё никто не использовал</h2>
+      <%= link_to "Вернуться на главную", questions_path %>
+    <% end %>
+  </h2>
+</div>
+
+<% @questions.each do |question| %>
+  <div class="mt-sm container <%= "hidden" if question.hidden? %>">
+    <%= render question %>
+  </div>
+<% end %>
