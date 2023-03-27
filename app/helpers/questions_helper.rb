@@ -1,11 +1,9 @@
 module QuestionsHelper
-  def parse_tags(line)
-    line.split(/(#[[:alpha:]][[:word:]]+)/).map do |element|
-      if element.match(/#[[:alpha:]][[:word:]]+/)
-        link_to(element, hash_tag_path(element.delete("#")), class: "in-text-hash-tag")
-      else
-        element
-      end
+  def text_with_link_hashtag(text)
+    text.gsub!(HashTag::REGEX) do |name|
+      link_to(name, hash_tag_path(name))
     end
+
+    simple_format(text)
   end
 end

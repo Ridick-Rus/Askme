@@ -1,9 +1,9 @@
 <div class="container mt-sm">
   <h2 class="title-lg">
     <% if @questions.any? %>
-      <h2 class="title-lg">Все вопросы с хэштэгом <%= @hash_tag %></h2>
+      <h2 class="title-lg">Все вопросы с хэштэгом <%= @hash_tag.text %></h2>
     <% else %>
-      <h2 class="title-lg"><%= @hash_tag %> пока ещё никто не использовал</h2>
+      <h2 class="title-lg"><%= @hash_tag.text %> пока ещё никто не использовал</h2>
       <%= link_to "Вернуться на главную", questions_path %>
     <% end %>
   </h2>
