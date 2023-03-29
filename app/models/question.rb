@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  after_commit :save_new_tags, on: :create
+  after_commit :save_new_tags, on: %i[ create update ]
 
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
