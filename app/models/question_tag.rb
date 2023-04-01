@@ -1,4 +1,4 @@
 class QuestionTag < ApplicationRecord
-  belongs_to :question, dependent: :destroy
-  belongs_to :hash_tag, dependent: :destroy
+  belongs_to :question
+  belongs_to :hash_tag
 end
